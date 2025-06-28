@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Add User</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e88e5;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #f8f9fa;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center;">
+    <div class="container" style="width: 100%; max-width: 400px; background-color: #2d2d2d; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+        <form action="/create" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+        <h1>New User</h1>
+        <input type="text" name="name" placeholder="Enter your name" required
+        style="width: 80%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #222;
+        color: #fff;">
+        <input type="password" name="password" placeholder="Password" required
+        style="width: 80%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #222;
+        color: #fff;">
+        <input type="submit" value="Add New User"
+        style="padding: 10px; background-color: #007acc; color: #f5f5f5; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+        </form>
+    </div>
+    </div>
+    <h2 style="margin-left: 35px; color: #ffd2d2;">Existing Users</h2>
+    <ul style="display: flex; justify-content: flex-start; flex-wrap: wrap; padding: 10px; margin-top: 30px;">
+        <% if (users.length > 0) { %>
+            <% users.forEach(user => { %>
+                <div class="task" style="width: 20%; padding: 8px; margin: 15px; background-color: #3c3c3c; color: #f5f5f5; border-radius: 4px;">
+                <li style=" font-size:large 10px; background-color: #3c3c3c; padding: 10px 15px; border-radius: 5px;">
+                    <a href="/login/<%= user._id %>" 
+                       style="text-decoration: none; color: #e88000; font-size: 20px; font-weight: bold;">
+                       <%= user.name %>
+                    </a>
+                </li>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <li style="color: #9c9c9c; font-size: 16px; text-align: center; padding: 10px; background-color: #1f1f1f; border-radius: 5px;">
+                No users found. Add a new user to get started.
+            </li>
+        <% } %>
+    </ul>
+    
+</body>
+</html>
